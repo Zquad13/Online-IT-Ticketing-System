@@ -1,0 +1,37 @@
+﻿@model SubAdminModel
+
+<h2>Create New SubAdmin</h2>
+
+@using (Html.BeginForm("CreateSubAdmin", "SuperAdmin", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.Name)
+        @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.JobField)
+        @Html.TextBoxFor(m => m.JobField, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Username)
+        @Html.TextBoxFor(m => m.Username, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Email)
+        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Password)
+        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+    </div>
+    <br />
+    <button type="submit" class="btn btn-success">Submit</button>    <a href="@Url.Action("SuperAdminDashboard", "SuperAdmin")" class="btn btn-primary ">Back</a>
+
+}
+<br />
+
+<style>
+    body {
+        background-color: aliceblue;
+    }
+</style>

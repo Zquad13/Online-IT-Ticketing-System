@@ -1,0 +1,39 @@
+﻿@model List<SubAdminModel>
+
+
+<h2>Manage SubAdmins</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Job Field</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var subAdmin in Model)
+        {
+            <tr>
+                <td>@subAdmin.Name</td>
+                <td>@subAdmin.JobField</td>
+                <td>@subAdmin.Username</td>
+                <td>@subAdmin.Email</td>
+                <td>
+                    <a href="@Url.Action("EditSubAdmin", "SuperAdmin", new { id = subAdmin.Id })" class="btn btn-warning">Edit</a>
+                    <a href="@Url.Action("DeleteSubAdmin", "SuperAdmin", new { id = subAdmin.Id })" class="btn btn-danger" onclick="return confirm()">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a href="@Url.Action("SuperAdminDashboard", "SuperAdmin")" class="btn btn-primary">Back</a>
+<br /> <br />
+
+<style>
+    body {
+        background-color: aliceblue;
+    }
+</style>

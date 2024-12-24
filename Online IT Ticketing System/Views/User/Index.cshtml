@@ -1,0 +1,82 @@
+﻿@{
+    Layout = null;
+    var ticketStatusCounts = ViewBag.TicketStatusCounts as Dictionary<string, int>;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h2>User Dashboard</h2>
+
+    <div>
+        <h3>Ticket Status Counts</h3>
+        <ul>
+            @if (ticketStatusCounts != null)
+            {
+                foreach (var status in ticketStatusCounts.Keys)
+                {
+                    <li>@status: @ticketStatusCounts[status]</li>
+                }
+            }
+        </ul>
+    </div>
+
+    <div>
+        <canvas id="ticketStatusChart" width="400" height="200"></canvas>
+    </div>
+
+    <script>
+        // Prepare data for the chart
+        var ticketStatuses = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(ticketStatusCounts?.Keys));
+        var ticketCounts = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(ticketStatusCounts?.Values));
+
+        // Render the chart
+        var ctx = document.getElementById('ticketStatusChart').getContext('2d');
+        var ticketStatusChart = new Chart(ctx, {
+            type: 'bar', // Chart type: bar
+            data: {
+                labels: ticketStatuses, // Status names
+                datasets: [{
+                    label: 'Ticket Counts',
+                    data: ticketCounts, // Status counts
+                    backgroundColor: [
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(153, 102, 255, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(153, 102, 255, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+
+    <h3>Update Ticket Status</h3>
+    <form method="post" action="/Dashboard/UpdateTicketStatus">
+        <label for="ticketId">Ticket ID:</label>
+        <input type="text" id="ticketId" name="ticketId" required>
+        <label for="newStatus">New Status:</label>
+        <input type="text" id="newStatus" name="newStatus" required>
+        <button type="submit">Update Status</button>
+    </form>
+</body>
+</html>
