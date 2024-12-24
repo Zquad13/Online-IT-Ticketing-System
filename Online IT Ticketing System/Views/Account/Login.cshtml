@@ -1,0 +1,51 @@
+﻿@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="d-flex justify-content-center align-items-center" style="min-height: 80vh; margin-bottom: 50px;">
+    <div class="card shadow-lg p-4" style="width: 400px; border-radius: 10px;background-color:white">
+        <h3 class="text-center mb-4">Login</h3>
+
+        @if (ViewBag.ErrorMessage != null)
+        {
+            <div class="alert alert-danger">
+                @ViewBag.ErrorMessage
+            </div>
+        }
+
+        <form asp-action="Login" method="post">
+            <div class="form-group mb-3">
+                <label for="username" class="form-label">Username</label>
+                <input type="text" id="username" name="username" class="form-control" placeholder="Enter your username" required />
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" id="password" name="password" class="form-control" placeholder="Enter your password" required />
+                <div class="form-check mt-2">
+                    <input type="checkbox" id="showPassword" class="form-check-input" onclick="togglePasswordVisibility()" />
+                    <label for="showPassword" class="form-check-label">Show Password</label>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block w-100 mb-3">Login</button>
+
+            <div class="text-center">
+                <p>Don't have an account? <a asp-action="Register">Sign up</a></p>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<script>
+    function togglePasswordVisibility() {
+        const passwordField = document.getElementById("password");
+        const passwordFieldType = passwordField.getAttribute("type");
+        if (passwordFieldType === "password") {
+            passwordField.setAttribute("type", "text");
+        } else {
+            passwordField.setAttribute("type", "password");
+        }
+    }
+</script>

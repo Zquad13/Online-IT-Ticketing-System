@@ -1,0 +1,24 @@
+﻿@model TicketAssignmentViewModel
+
+@{
+    ViewData["Title"] = "Assign Ticket";
+}
+
+<div class="container mt-5">
+    <h1>Assign Ticket</h1>
+    <form asp-action="AssignTicket" method="post">
+        <input type="hidden" asp-for="TicketId" value="@Model.TicketId" />
+        <div class="mb-3">
+            <label for="SubAdminId" class="form-label">Assign to SubAdmin</label>
+            <select asp-for="SubAdminId" asp-items="@(new SelectList(Model.SubAdmins, "Id", "Name"))" class="form-control">
+                <option value="">Select SubAdmin</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-danger">Assign</button>
+    </form>
+</div>
+<style>
+    body {
+        background-color: white;
+    }
+</style>

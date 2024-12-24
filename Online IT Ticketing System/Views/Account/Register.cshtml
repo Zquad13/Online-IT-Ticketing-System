@@ -1,0 +1,104 @@
+﻿@model ITTicketingSystem.Models.RegisterViewModel
+
+@{
+    ViewData["Title"] = "Sign Up";
+}
+<div class="d-flex justify-content-center align-items-center" style="min-height: 90vh; margin-bottom: 50px;">
+    <div class="card shadow-lg p-4" style="width: 800px; border-radius: 10px;">
+        <h3 class="text-center mb-4">Sign Up</h3>
+        <form id="signupForm" asp-action="Register" method="post">
+            @Html.AntiForgeryToken()
+            <div asp-validation-summary="All" class="text-danger"></div>
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label asp-for="FirstName" class="form-label"></label>
+                    <input asp-for="FirstName" class="form-control" id="firstName" />
+                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label asp-for="LastName" class="form-label"></label>
+                    <input asp-for="LastName" class="form-control" id="lastName" />
+                    <span asp-validation-for="LastName" class="text-danger"></span>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label asp-for="DateOfBirth" class="form-label">Date of Birth</label>
+                    <input asp-for="DateOfBirth" class="form-control" type="date" id="dateOfBirth" />
+                    <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+                    <small id="dobError" class="text-danger"></small>
+                </div>
+
+
+                <div class="col-md-6 mb-3">
+                    <label asp-for="Gender" class="form-label"></label>
+                    <select asp-for="Gender" class="form-control" id="gender">
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
+                    </select>
+                    <span asp-validation-for="Gender" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label asp-for="PhoneNumber" class="form-label"></label>
+                    <input asp-for="PhoneNumber" class="form-control" type="tel" id="phoneNumber" maxlength="10" pattern="\d{10}" />
+                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label asp-for="Email" class="form-label"></label>
+                    <input asp-for="Email" class="form-control" type="email" id="email" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label asp-for="Address" class="form-label"></label>
+                    <input asp-for="Address" class="form-control" id="address" />
+                    <span asp-validation-for="Address" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label asp-for="State" class="form-label"></label>
+                    <select asp-for="State" class="form-control" id="stateDropdown">
+                        <option value="">Select State</option>
+                    </select>
+                    <span asp-validation-for="State" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label asp-for="City" class="form-label"></label>
+                    <select asp-for="City" class="form-control" id="cityDropdown">
+                        <option value="">Select City</option>
+                    </select>
+                    <span asp-validation-for="City" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label asp-for="Username" class="form-label"></label>
+                    <input asp-for="Username" class="form-control" id="username" />
+                    <span asp-validation-for="Username" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label asp-for="Password" class="form-label"></label>
+                    <input asp-for="Password" class="form-control" type="password" id="password" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label asp-for="ConfirmPassword" class="form-label"></label>
+                    <input asp-for="ConfirmPassword" class="form-control" type="password" id="confirmPassword" />
+                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100 mt-3">Register</button>
+			<center> <p>Have an account? <a asp-action="Login">Sign In</a></p></center>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/register-validation.js"></script>
+}
