@@ -41,7 +41,7 @@ namespace Online_IT_Ticketing_System.Controllers
                 {
                     try
                     {
-                        
+
                         using (var memoryStream = new MemoryStream())
                         {
                             await AttachmentPath.CopyToAsync(memoryStream);
@@ -75,6 +75,32 @@ namespace Online_IT_Ticketing_System.Controllers
             var tickets = DatabaseHelper.GetTicketsByUserName(userName);
             return View(tickets);
         }
+<<<<<<< HEAD
+=======
+        //[HttpGet]
+        //public IActionResult ViewImage(string ticketId)
+        //{
+        //    try
+        //    {
+        //        // Fetch the ticket by TicketId
+        //        var ticket = DatabaseHelper.GetTicketById(ticketId); // You need to implement this method.
+
+        //        if (ticket?.AttachmentData != null)
+        //        {
+        //            return File(ticket.AttachmentData, "image/png"); // or "image/jpeg" based on your image format.
+        //        }
+        //        else
+        //        {
+        //            return NotFound("Image not found.");
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        _logger.LogError($"Error retrieving image for TicketId {ticketId}: {ex.Message}");
+        //        return StatusCode(500, "Internal server error.");
+        //    }
+        //}
+>>>>>>> bfb87ae7c7827d27aa1b522ffc7d0be27305e13e
 
     }
 

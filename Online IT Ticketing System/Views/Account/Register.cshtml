@@ -3,6 +3,7 @@
 @{
     ViewData["Title"] = "Sign Up";
 }
+<<<<<<< HEAD
 
 <div class="d-flex justify-content-center align-items-center" style="min-height: 90vh; margin-bottom: 50px;">
     <div class="card shadow-lg p-4" style="width: 800px; border-radius: 10px;">
@@ -15,6 +16,11 @@
             </div>
         }
 
+=======
+<div class="d-flex justify-content-center align-items-center" style="min-height: 90vh; margin-bottom: 50px;">
+    <div class="card shadow-lg p-4" style="width: 800px; border-radius: 10px;">
+        <h3 class="text-center mb-4">Sign Up</h3>
+>>>>>>> bfb87ae7c7827d27aa1b522ffc7d0be27305e13e
         <form id="signupForm" asp-action="Register" method="post">
             @Html.AntiForgeryToken()
             <div asp-validation-summary="All" class="text-danger"></div>
@@ -31,7 +37,10 @@
                     <input asp-for="LastName" class="form-control" id="lastName" />
                     <span asp-validation-for="LastName" class="text-danger"></span>
                 </div>
+<<<<<<< HEAD
 
+=======
+>>>>>>> bfb87ae7c7827d27aa1b522ffc7d0be27305e13e
                 <div class="col-md-6 mb-3">
                     <label asp-for="DateOfBirth" class="form-label">Date of Birth</label>
                     <input asp-for="DateOfBirth" class="form-control" type="date" id="dateOfBirth" />
@@ -39,6 +48,10 @@
                     <small id="dobError" class="text-danger"></small>
                 </div>
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> bfb87ae7c7827d27aa1b522ffc7d0be27305e13e
                 <div class="col-md-6 mb-3">
                     <label asp-for="Gender" class="form-label"></label>
                     <select asp-for="Gender" class="form-control" id="gender">
@@ -103,9 +116,13 @@
             </div>
 
             <button type="submit" class="btn btn-primary w-100 mt-3">Register</button>
+<<<<<<< HEAD
             <center>
                 <p>Have an account? <a asp-action="Login">Sign In</a></p>
             </center>
+=======
+			<center> <p>Have an account? <a asp-action="Login">Sign In</a></p></center>
+>>>>>>> bfb87ae7c7827d27aa1b522ffc7d0be27305e13e
         </form>
     </div>
 </div>

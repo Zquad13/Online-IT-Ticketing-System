@@ -45,6 +45,7 @@ namespace Online_IT_Ticketing_System.DAL
                 {
                     conn.Open();
 
+<<<<<<< HEAD
                     // Check if the email is already registered
                     using (SqlCommand checkEmailCmd = new SqlCommand("sp_CheckEmailExists", conn))
                     {
@@ -61,6 +62,8 @@ namespace Online_IT_Ticketing_System.DAL
                     }
 
                     // Proceed with user registration
+=======
+>>>>>>> bfb87ae7c7827d27aa1b522ffc7d0be27305e13e
                     using (SqlCommand cmd = new SqlCommand("sp_RegisterUser", conn))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
@@ -77,7 +80,11 @@ namespace Online_IT_Ticketing_System.DAL
                         cmd.Parameters.AddWithValue("@Username", username);
                         cmd.Parameters.AddWithValue("@PasswordHash", passwordHash); // Storing the hashed password
 
+<<<<<<< HEAD
                         return cmd.ExecuteNonQuery() > 0; // Returns true if registration was successful
+=======
+                        return cmd.ExecuteNonQuery() > 0;
+>>>>>>> bfb87ae7c7827d27aa1b522ffc7d0be27305e13e
                     }
                 }
             }
@@ -88,7 +95,10 @@ namespace Online_IT_Ticketing_System.DAL
             }
         }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> bfb87ae7c7827d27aa1b522ffc7d0be27305e13e
         // Validate User Login
         public static string ValidateUser(string username)
         {
@@ -300,16 +310,25 @@ namespace Online_IT_Ticketing_System.DAL
         public static SubAdminModel GetSubAdminById(int id)
         {
             SubAdminModel subAdmin = null;
+<<<<<<< HEAD
 
+=======
+>>>>>>> bfb87ae7c7827d27aa1b522ffc7d0be27305e13e
             try
             {
                 using (SqlConnection conn = new SqlConnection(new DatabaseHelper().GetConnectionString()))
                 {
+<<<<<<< HEAD
                     
                     using (SqlCommand cmd = new SqlCommand("GetSubAdminById", conn))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@Id", id); 
+=======
+                    using (SqlCommand cmd = new SqlCommand("SELECT * FROM SubAdmins WHERE Id = @Id", conn))
+                    {
+                        cmd.Parameters.AddWithValue("@Id", id);
+>>>>>>> bfb87ae7c7827d27aa1b522ffc7d0be27305e13e
 
                         conn.Open();
                         using (SqlDataReader reader = cmd.ExecuteReader())
@@ -338,7 +357,10 @@ namespace Online_IT_Ticketing_System.DAL
             return subAdmin;
         }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> bfb87ae7c7827d27aa1b522ffc7d0be27305e13e
         // Update SubAdmin
         public static bool UpdateSubAdmin(int id, string name, string jobField, string username, string email, string password)
         {
@@ -689,6 +711,7 @@ namespace Online_IT_Ticketing_System.DAL
 
             return messages;
         }
+<<<<<<< HEAD
         public static (int totalTickets, int closedTickets, int processingTickets) GetTicketCountsForUser(int userId)
         {
             try
@@ -752,6 +775,8 @@ namespace Online_IT_Ticketing_System.DAL
             }
         }
 
+=======
+>>>>>>> bfb87ae7c7827d27aa1b522ffc7d0be27305e13e
 
     }
 
