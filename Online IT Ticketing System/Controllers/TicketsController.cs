@@ -75,8 +75,6 @@ namespace Online_IT_Ticketing_System.Controllers
             var tickets = DatabaseHelper.GetTicketsByUserName(userName);
             return View(tickets);
         }
-<<<<<<< HEAD
-=======
         //[HttpGet]
         //public IActionResult ViewImage(string ticketId)
         //{
@@ -100,7 +98,6 @@ namespace Online_IT_Ticketing_System.Controllers
         //        return StatusCode(500, "Internal server error.");
         //    }
         //}
->>>>>>> bfb87ae7c7827d27aa1b522ffc7d0be27305e13e
 
     }
 

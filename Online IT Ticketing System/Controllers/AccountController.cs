@@ -100,7 +100,7 @@ namespace ITTicketingSystem.Controllers
         {
             if (ModelState.IsValid)
             {
-<<<<<<< HEAD
+
                 // Hash the password using BCrypt
                 string hashedPassword = BCrypt.Net.BCrypt.HashPassword(model.Password);
 
@@ -119,11 +119,6 @@ namespace ITTicketingSystem.Controllers
                 }
 
                 // Register the user using DatabaseHelper
-=======
-                // Hash the password using BCrypt for users
-                string hashedPassword = BCrypt.Net.BCrypt.HashPassword(model.Password);
-
->>>>>>> bfb87ae7c7827d27aa1b522ffc7d0be27305e13e
                 bool isRegistered = DatabaseHelper.SignUpUser(
                     model.FirstName,
                     model.LastName,
@@ -138,7 +133,7 @@ namespace ITTicketingSystem.Controllers
                     hashedPassword
                 );
 
-<<<<<<< HEAD
+
                 // Check if the registration was successful
                 if (isRegistered)
                 {
@@ -153,22 +148,13 @@ namespace ITTicketingSystem.Controllers
             }
 
             // Return to the registration view if the model state is invalid or registration fails
-=======
-                if (isRegistered)
-                {
-                    return RedirectToAction("Login", "Account");
-                }
 
-                ViewBag.ErrorMessage = "Registration failed. Please try again.";
-            }
-
->>>>>>> bfb87ae7c7827d27aa1b522ffc7d0be27305e13e
             return View(model);
         }
 
         public IActionResult Logout()
         {
-<<<<<<< HEAD
+
             // Clear the session or authentication token
             HttpContext.Session.Clear(); // Example for session-based authentication
             HttpContext.SignOutAsync(); // Example for cookie-based authentication
@@ -181,10 +167,6 @@ namespace ITTicketingSystem.Controllers
             return RedirectToAction("Login", "Account");
         }
 
-=======
-            HttpContext.Session.Clear();
-            return RedirectToAction("Login", "Account");
-        }
->>>>>>> bfb87ae7c7827d27aa1b522ffc7d0be27305e13e
+
     }
 }
