@@ -6,6 +6,7 @@ using Online_IT_Ticketing_System.Models;
 using System;
 
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 
 namespace ITTicketingSystem.Controllers
@@ -154,18 +155,20 @@ namespace ITTicketingSystem.Controllers
 
         public IActionResult Logout()
         {
+            // Clear the session (for session-based authentication)
+            HttpContext.Session.Clear();
 
-            // Clear the session or authentication token
-            HttpContext.Session.Clear(); // Example for session-based authentication
-            HttpContext.SignOutAsync(); // Example for cookie-based authentication
+            // Sign out from cookie-based authentication (if you're using cookies)
+            HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
 
-            // Disable caching for the previous pages
-            Response.Headers.Add("Cache-Control", "no-cache, no-store, must-revalidate");
-            Response.Headers.Add("Pragma", "no-cache");
-            Response.Headers.Add("Expires", "0");
+            // Disable caching for the previous pages (prevent back navigation after logout)
+           
+            
 
+            // Redirect to the Login page
             return RedirectToAction("Login", "Account");
         }
+
 
 
     }
