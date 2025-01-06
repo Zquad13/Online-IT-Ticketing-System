@@ -101,14 +101,14 @@ namespace ITTicketingSystem.Controllers
                 // Hash the password using BCrypt
                 string hashedPassword = BCrypt.Net.BCrypt.HashPassword(model.Password);
 
-                // Check if the email is already taken using DatabaseHelper
+                // Check if the email is already taken 
                 if (DatabaseHelper.IsEmailTaken(model.Email))
                 {
                     ViewBag.ErrorMessage = "The email is already registered.";
                     return View(model); // Return with error message
                 }
 
-                // Check if the username is already taken using DatabaseHelper
+                // Check if the username is already taken
                 if (DatabaseHelper.IsUsernameTaken(model.Username))
                 {
                     ViewBag.ErrorMessage = "The username is already taken.";
